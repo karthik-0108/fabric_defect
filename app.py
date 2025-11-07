@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, session, send_from_directory
 import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -6,6 +6,7 @@ import numpy as np
 import joblib
 from PIL import Image
 from pymongo import MongoClient
+import bcrypt
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -114,7 +115,56 @@ def predict_image(image_pil):
         return {"class": "N/A", "confidence": 0.0, "error": str(e)}
 
 # ==========================================================
-# ROUTES
+# AUTHENTICATION ROUTES
+# ==========================================================
+@app.route("/signup", methods=["POST"])
+def signup():
+    try:
+        data = request.get_json()
+        username = data.get("username")
+        password = data.get("password")
+
+        if not username or not password:
+            return jsonify({"success": False, "message": "Username and password required"}), 400
+
+        if db["users"].find_one({"username": username}):
+            return jsonify({"success": False, "message": "Username already exists"}), 400
+
+        hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+        db["users"].insert_one({
+            "username": username,
+            "password": hashed,
+            "created_at": datetime.now().isoformat()
+        })
+        return jsonify({"success": True, "message": "Signup successful"})
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    try:
+        data = request.get_json()
+        username = data.get("username")
+        password = data.get("password")
+
+        user = db["users"].find_one({"username": username})
+        if user and bcrypt.checkpw(password.encode("utf-8"), user["password"].encode("utf-8")):
+            session["username"] = username
+            return jsonify({"success": True, "message": "Login successful"})
+        else:
+            return jsonify({"success": False, "message": "Invalid credentials"}), 401
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return jsonify({"success": True, "message": "Logged out"})
+
+# ==========================================================
+# FRONTEND + ML ROUTES
 # ==========================================================
 @app.route("/")
 def index():
