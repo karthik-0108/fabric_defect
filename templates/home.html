@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Fabric Defect Detection{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Fabric Defect Detection</h1>
+    <p class="subtitle">Upload images to detect fabric defects</p>
+</div>
+
+<div class="upload-section">
+    <div class="upload-tabs">
+        <button class="tab-btn active" onclick="switchTab('file')">Browse File</button>
+        <button class="tab-btn" onclick="switchTab('url')">Upload from URL</button>
+    </div>
+    
+    <div id="file-upload" class="upload-content active">
+        <form id="file-form" class="upload-form">
+            <div class="form-group">
+                <label for="file-input" class="file-label">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span>Choose Image File</span>
+                </label>
+                <input type="file" id="file-input" name="file" accept="image/*" style="display: none;" required>
+                <div id="file-name" class="file-name-display"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload File</button>
+        </form>
+    </div>
+    
+    <div id="url-upload" class="upload-content">
+        <form id="url-form" class="upload-form">
+            <div class="form-group">
+                <label for="image-url">Image URL</label>
+                <input type="url" id="image-url" name="image_url" placeholder="https://example.com/image.jpg" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Download & Upload</button>
+        </form>
+    </div>
+</div>
+
+<div id="upload-status" class="upload-status"></div>
+
+<div id="uploaded-images" class="uploaded-images"></div>
+
+<script>
+    let currentTab = 'file';
+    
+    function switchTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.upload-content').forEach(content => content.classList.remove('active'));
+        
+        if (tab === 'file') {
+            document.querySelector('.tab-btn:first-child').classList.add('active');
+            document.getElementById('file-upload').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:last-child').classList.add('active');
+            document.getElementById('url-upload').classList.add('active');
+        }
+    }
+    
+    document.getElementById('file-input').addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || '';
+        document.getElementById('file-name').textContent = fileName || '';
+    });
+    
+    document.getElementById('file-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file', document.getElementById('file-input').files[0]);
+        formData.append('upload_type', 'file');
+        
+        await handleUpload(formData);
+    });
+    
+    document.getElementById('url-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('image_url', document.getElementById('image-url').value);
+        formData.append('upload_type', 'url');
+        
+        await handleUpload(formData);
+    });
+    
+    async function handleUpload(formData) {
+        const statusDiv = document.getElementById('upload-status');
+        statusDiv.innerHTML = '<div class="status-message loading">Uploading...</div>';
+        
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                statusDiv.innerHTML = `<div class="status-message success">${data.message}</div>`;
+                // Show uploaded image
+                const imagesDiv = document.getElementById('uploaded-images');
+                const imgUrl = `/uploads/${data.filename}`;
+                imagesDiv.innerHTML = `
+                    <div class="image-preview">
+                        <h3>Uploaded Image:</h3>
+                        <img src="${imgUrl}" alt="Uploaded image">
+                        <p>Filename: ${data.filename}</p>
+                    </div>
+                `;
+                // Reset forms
+                document.getElementById('file-form').reset();
+                document.getElementById('url-form').reset();
+                document.getElementById('file-name').textContent = '';
+            } else {
+                statusDiv.innerHTML = `<div class="status-message error">${data.message}</div>`;
+            }
+        } catch (error) {
+            statusDiv.innerHTML = `<div class="status-message error">Error: ${error.message}</div>`;
+        }
+    }
+</script>
+{% endblock %}
+

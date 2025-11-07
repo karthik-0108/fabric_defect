@@ -1,0 +1,666 @@
+[
+  {
+    "id": 38,
+    "username": "stone",
+    "filename": "hole_20251104_102001_20251105_105344.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-05T10:53:44.674127",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 85.34,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 14.656925201416016,
+        "defect": 85.34307479858398
+      }
+    }
+  },
+  {
+    "id": 37,
+    "username": "stone",
+    "filename": "WhatsApp_Image_2025-11-03_at_11.03.22_e08251d0_20251103_112016_20251105_105325.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-05T10:53:25.635820",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 55.28,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 55.27715086936951,
+        "defect": 44.72284913063049
+      }
+    }
+  },
+  {
+    "id": 36,
+    "username": "stone",
+    "filename": "images_20251104_102413_20251105_105226.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-05T10:52:27.260237",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 79.3,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 79.29787039756775,
+        "defect": 20.70212960243225
+      }
+    }
+  },
+  {
+    "id": 35,
+    "username": "stone",
+    "filename": "images_1_20251105_105159.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-05T10:52:05.625919",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.0021729412765125744,
+        "defect": 99.99782705872349
+      }
+    }
+  },
+  {
+    "id": 34,
+    "username": "Dineshwar",
+    "filename": "images_20251104_102413.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-04T10:24:13.568762",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 79.3,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 79.29787039756775,
+        "defect": 20.70212960243225
+      }
+    }
+  },
+  {
+    "id": 33,
+    "username": "Dineshwar",
+    "filename": "hole_20251104_102001.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-04T10:20:03.925582",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 85.34,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 14.656925201416016,
+        "defect": 85.34307479858398
+      }
+    }
+  },
+  {
+    "id": 32,
+    "username": "MANAS VAMSI KRISHNA",
+    "filename": "images_20251103_211934.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:19:35.115753",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 79.3,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 79.29787039756775,
+        "defect": 20.70212960243225
+      }
+    }
+  },
+  {
+    "id": 31,
+    "username": "admin",
+    "filename": "url_20251103_211530.jpg",
+    "upload_type": "url",
+    "source_url": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT0NuzLS_6xrcyJLHXAXBmjp8WfANJx6WW4xKOdu7TcPpPJNab0siXKlqX89lIMx41ioBUqsBE_RAUh0in6qe4gHt0jY2z_6uUangtnPz226NJy8hePMs8A&usqp=CAc",
+    "timestamp": "2025-11-03T21:15:30.628592",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 94.37,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 5.633010715246201,
+        "defect": 94.3669892847538
+      }
+    }
+  },
+  {
+    "id": 30,
+    "username": "admin",
+    "filename": "images_1_20251103_211350.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:13:50.881558",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.0021729412765125744,
+        "defect": 99.99782705872349
+      }
+    }
+  },
+  {
+    "id": 29,
+    "username": "admin",
+    "filename": "WIN_20250724_11_42_29_Pro_20251103_211215.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:12:15.379357",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 99.74,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.2638284582644701,
+        "defect": 99.73617154173553
+      }
+    }
+  },
+  {
+    "id": 28,
+    "username": "admin",
+    "filename": "images_20251103_211150.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:11:50.507977",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 79.3,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 79.29787039756775,
+        "defect": 20.70212960243225
+      }
+    }
+  },
+  {
+    "id": 27,
+    "username": "admin",
+    "filename": "hole_20251103_211035.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:10:35.607577",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 85.34,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 14.656925201416016,
+        "defect": 85.34307479858398
+      }
+    }
+  },
+  {
+    "id": 26,
+    "username": "admin",
+    "filename": "good_20251103_142739_20251103_184759_20251103_211022.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:10:22.855924",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 96.18,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 96.180260181427,
+        "defect": 3.819739818572998
+      }
+    }
+  },
+  {
+    "id": 25,
+    "username": "admin",
+    "filename": "hole_20251103_210951.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:09:52.105480",
+    "status": "uploaded",
+    "prediction": {
+      "class": "defect",
+      "confidence": 85.34,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 14.656925201416016,
+        "defect": 85.34307479858398
+      }
+    }
+  },
+  {
+    "id": 24,
+    "username": "admin",
+    "filename": "good_20251103_210934.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:09:37.601451",
+    "status": "uploaded",
+    "prediction": {
+      "class": "good",
+      "confidence": 96.18,
+      "is_defect": false,
+      "all_predictions": {
+        "good": 96.180260181427,
+        "defect": 3.819739818572998
+      }
+    }
+  },
+  {
+    "id": 23,
+    "username": "admin",
+    "filename": "good_20251103_210435.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:04:38.652472",
+    "status": "uploaded",
+    "prediction": null
+  },
+  {
+    "id": 22,
+    "username": "admin",
+    "filename": "good_20251103_210314.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T21:03:18.036762",
+    "status": "uploaded",
+    "prediction": null
+  },
+  {
+    "id": 21,
+    "username": "admin",
+    "filename": "good_20251103_142739_20251103_184759.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T18:48:01.652533",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 99.36,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.2863781452178955,
+        "hole": 99.35699462890625,
+        "other_defect": 0.045483365654945374,
+        "stain_or_oil": 0.1660132110118866,
+        "structural_defect": 0.14513346552848816
+      }
+    }
+  },
+  {
+    "id": 20,
+    "username": "admin",
+    "filename": "stain_20251103_142759_20251103_184557.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T18:45:57.689937",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 99.35,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.29174548387527466,
+        "hole": 99.34711456298828,
+        "other_defect": 0.0460878424346447,
+        "stain_or_oil": 0.17828847467899323,
+        "structural_defect": 0.1367635279893875
+      }
+    }
+  },
+  {
+    "id": 19,
+    "username": "admin",
+    "filename": "good_20251103_142739_20251103_151213_20251103_184536.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T18:45:39.845580",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 99.36,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.2863781452178955,
+        "hole": 99.35699462890625,
+        "other_defect": 0.045483365654945374,
+        "stain_or_oil": 0.1660132110118866,
+        "structural_defect": 0.14513346552848816
+      }
+    }
+  },
+  {
+    "id": 18,
+    "username": "admin",
+    "filename": "good_20251103_142739_20251103_151213.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T15:12:16.376805",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 99.04,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.3483720123767853,
+        "hole": 99.0419921875,
+        "other_defect": 0.18509575724601746,
+        "stain_or_oil": 0.26509422063827515,
+        "structural_defect": 0.15943968296051025
+      }
+    }
+  },
+  {
+    "id": 17,
+    "username": "admin",
+    "filename": "hole_20251103_142811.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:28:11.698230",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 92.32,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.7732725739479065,
+        "hole": 92.31863403320312,
+        "other_defect": 2.2470767498016357,
+        "stain_or_oil": 1.0183289051055908,
+        "structural_defect": 3.6426923274993896
+      }
+    }
+  },
+  {
+    "id": 16,
+    "username": "admin",
+    "filename": "stain_20251103_142759.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:27:59.982152",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 92.1,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.7854067087173462,
+        "hole": 92.10498046875,
+        "other_defect": 2.312372922897339,
+        "stain_or_oil": 1.0555920600891113,
+        "structural_defect": 3.7416484355926514
+      }
+    }
+  },
+  {
+    "id": 15,
+    "username": "admin",
+    "filename": "good_20251103_142739.png",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:27:39.678443",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 92.47,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.7624863386154175,
+        "hole": 92.47187042236328,
+        "other_defect": 2.2443437576293945,
+        "stain_or_oil": 1.0017472505569458,
+        "structural_defect": 3.51955246925354
+      }
+    }
+  },
+  {
+    "id": 14,
+    "username": "admin",
+    "filename": "images_20251103_142301.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:23:02.065449",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 92.4,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.8255218863487244,
+        "hole": 92.39788818359375,
+        "other_defect": 2.3018367290496826,
+        "stain_or_oil": 1.0701816082000732,
+        "structural_defect": 3.4045767784118652
+      }
+    }
+  },
+  {
+    "id": 13,
+    "username": "admin",
+    "filename": "download_20251103_142148.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:21:48.862194",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 91.55,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.9514525532722473,
+        "hole": 91.55406188964844,
+        "other_defect": 2.404080867767334,
+        "stain_or_oil": 1.2116639614105225,
+        "structural_defect": 3.8787403106689453
+      }
+    }
+  },
+  {
+    "id": 12,
+    "username": "admin",
+    "filename": "1_20251103_142123.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:21:26.754617",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 91.66,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 0.8445379137992859,
+        "hole": 91.66429138183594,
+        "other_defect": 2.4055168628692627,
+        "stain_or_oil": 1.151496410369873,
+        "structural_defect": 3.9341542720794678
+      }
+    }
+  },
+  {
+    "id": 11,
+    "username": "admin",
+    "filename": "1_20251103_141903.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:19:03.359194",
+    "status": "uploaded",
+    "prediction": null
+  },
+  {
+    "id": 10,
+    "username": "admin",
+    "filename": "1_20251103_114954_20251103_140908.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T14:09:09.079774",
+    "status": "uploaded",
+    "prediction": null
+  },
+  {
+    "id": 9,
+    "username": "admin",
+    "filename": "download_20251103_120822.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T12:08:25.430921",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 1.09245685414594e-12,
+        "hole": 100.0,
+        "other_defect": 1.642275826441164e-08,
+        "stain_or_oil": 2.0655693333537783e-07,
+        "structural_defect": 3.693422304107408e-12
+      }
+    }
+  },
+  {
+    "id": 8,
+    "username": "admin",
+    "filename": "1_20251103_114954.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T11:49:54.269991",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 9.294440217466615e-12,
+        "hole": 100.0,
+        "other_defect": 3.819796745574422e-08,
+        "stain_or_oil": 2.078936631733086e-07,
+        "structural_defect": 6.244198907934262e-11
+      }
+    }
+  },
+  {
+    "id": 7,
+    "username": "admin",
+    "filename": "images_2_20251103_113631.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T11:36:31.317090",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 8.348185857876e-12,
+        "hole": 100.0,
+        "other_defect": 3.163101425229797e-08,
+        "stain_or_oil": 2.0149744273112447e-07,
+        "structural_defect": 5.1662746997083175e-11
+      }
+    }
+  },
+  {
+    "id": 6,
+    "username": "admin",
+    "filename": "images_1_20251103_113552.jpeg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T11:35:52.378395",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 6.6853215671680566e-12,
+        "hole": 100.0,
+        "other_defect": 1.7807604280051237e-08,
+        "stain_or_oil": 2.5821810822890257e-07,
+        "structural_defect": 9.757261838772013e-12
+      }
+    }
+  },
+  {
+    "id": 5,
+    "username": "admin",
+    "filename": "url_20251103_112423.jpg",
+    "upload_type": "url",
+    "source_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFdrsDz1p9bHLnk1Ah8wEUd_HB4mxKmr067g&s",
+    "timestamp": "2025-11-03T11:24:23.316822",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 1.0397255105487613e-11,
+        "hole": 100.0,
+        "other_defect": 4.308513723572105e-08,
+        "stain_or_oil": 2.3745192834212503e-07,
+        "structural_defect": 1.048768502598385e-10
+      }
+    }
+  },
+  {
+    "id": 4,
+    "username": "admin",
+    "filename": "url_20251103_112354.jpg",
+    "upload_type": "url",
+    "source_url": "https://thegoodloom.com/cdn/shop/products/VAR07889_7dbc793c-95f9-4513-9feb-577de4d5ca3d_1800x1800.jpg?v=1690975440",
+    "timestamp": "2025-11-03T11:23:54.896698",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 7.602357111891056e-12,
+        "hole": 100.0,
+        "other_defect": 2.717397151741352e-08,
+        "stain_or_oil": 3.7250345030770404e-07,
+        "structural_defect": 8.614010893470692e-11
+      }
+    }
+  },
+  {
+    "id": 3,
+    "username": "admin",
+    "filename": "WIN_20250724_11_42_29_Pro_20251103_112156.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T11:21:56.752950",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 1.5337940336215827e-12,
+        "hole": 100.0,
+        "other_defect": 2.421018585607726e-08,
+        "stain_or_oil": 4.216124693812162e-07,
+        "structural_defect": 1.2158034128073592e-11
+      }
+    }
+  },
+  {
+    "id": 2,
+    "username": "admin",
+    "filename": "WhatsApp_Image_2025-11-03_at_11.03.22_e08251d0_20251103_112016.jpg",
+    "upload_type": "file",
+    "timestamp": "2025-11-03T11:20:20.595544",
+    "status": "uploaded",
+    "prediction": {
+      "class": "hole",
+      "confidence": 100.0,
+      "is_defect": true,
+      "all_predictions": {
+        "good": 1.6207418436844923e-12,
+        "hole": 100.0,
+        "other_defect": 1.884103362215228e-08,
+        "stain_or_oil": 4.430594202631255e-08,
+        "structural_defect": 5.264993736125989e-12
+      }
+    }
+  },
+  {
+    "id": 1,
+    "username": "Suryavardhan",
+    "filename": "url_20251103_083711.jpg",
+    "upload_type": "url",
+    "source_url": "https://tse3.mm.bing.net/th/id/OIP.U6drSnIzxJ-keP5DRH_nagAAAA?pid=Api&P=0&h=180",
+    "timestamp": "2025-11-03T08:37:11.951964",
+    "status": "uploaded",
+    "prediction": null
+  }
+]
