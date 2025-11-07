@@ -16,17 +16,15 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # ==========================================================
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
-# Limit threads and disable GPU for Render CPU instance
+# Optimize TensorFlow for Render (CPU)
 tf.config.threading.set_intra_op_parallelism_threads(1)
 tf.config.threading.set_inter_op_parallelism_threads(1)
 
-# Disable GPU (Render often doesn't support CUDA)
 try:
     tf.config.set_visible_devices([], 'GPU')
 except:
     pass
 
-# Limit TensorFlow memory usage
 for dev in tf.config.list_physical_devices('CPU'):
     try:
         tf.config.experimental.set_memory_growth(dev, True)
@@ -38,6 +36,7 @@ for dev in tf.config.list_physical_devices('CPU'):
 # ==========================================================
 app = Flask(__name__)
 app.secret_key = "render-secure-key"
+
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -58,6 +57,7 @@ try:
     print("✅ Model loaded successfully.")
 except Exception as e:
     print(f"❌ Model load failed: {e}")
+    model = None
 
 try:
     print(f"Loading label encoder from: {ENCODER_PATH}")
@@ -65,16 +65,20 @@ try:
     print(f"✅ Label encoder loaded. Classes: {label_encoder.classes_}")
 except Exception as e:
     print(f"❌ Label encoder load failed: {e}")
+    label_encoder = None
 
 # ==========================================================
 # MONGODB CONNECTION
 # ==========================================================
 try:
-    client = MongoClient("mongodb+srv://kummethadineshwarreddy_db_user:Din123@cluster0.mxpr4jp.mongodb.net/?appName=Cluster0")
+    client = MongoClient(
+        "mongodb+srv://kummethadineshwarreddy_db_user:Din123@cluster0.mxpr4jp.mongodb.net/?appName=Cluster0"
+    )
     db = client["fabric_defect_db"]
     print("✅ Connected to MongoDB Atlas")
 except Exception as e:
     print(f"❌ MongoDB connection failed: {e}")
+    db = None
 
 # ==========================================================
 # HELPERS
@@ -91,6 +95,9 @@ def preprocess_image(img):
     return preprocess_input(img)
 
 def predict_image(image_pil):
+    if model is None:
+        return {"class": "N/A", "confidence": 0.0, "error": "Model not available"}
+
     try:
         with tf.device("/CPU:0"):
             processed = preprocess_image(image_pil)
@@ -131,13 +138,12 @@ def upload():
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(filepath)
 
-        img = Image.open(filepath)
-        result = predict_image(img)
+        with Image.open(filepath) as img:
+            result = predict_image(img)
 
         return jsonify({"success": True, "filename": filename, "prediction": result})
     except MemoryError:
-        print("❌ Out of memory during prediction")
-        return jsonify({"success": False, "message": "Server ran out of memory"}), 500
+        return jsonify({"success": False, "message": "Server ran out of memory. Try a smaller image."}), 507
     except Exception as e:
         print(f"❌ Upload error: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
