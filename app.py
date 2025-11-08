@@ -115,12 +115,12 @@ def predict_image(image_pil):
         return {"class": "N/A", "confidence": 0.0, "error": str(e)}
 
 # ==========================================================
-# AUTHENTICATION ROUTES
+# AUTHENTICATION ROUTES (JSON + FORM SAFE)
 # ==========================================================
 @app.route("/signup", methods=["POST"])
 def signup():
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or request.form
         username = data.get("username")
         password = data.get("password")
 
@@ -136,7 +136,7 @@ def signup():
             "password": hashed,
             "created_at": datetime.now().isoformat()
         })
-        return jsonify({"success": True, "message": "Signup successful"})
+        return jsonify({"success": True, "message": "Signup successful"}), 200
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
 
@@ -144,14 +144,17 @@ def signup():
 @app.route("/login", methods=["POST"])
 def login():
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or request.form
         username = data.get("username")
         password = data.get("password")
+
+        if not username or not password:
+            return jsonify({"success": False, "message": "Username and password required"}), 400
 
         user = db["users"].find_one({"username": username})
         if user and bcrypt.checkpw(password.encode("utf-8"), user["password"].encode("utf-8")):
             session["username"] = username
-            return jsonify({"success": True, "message": "Login successful"})
+            return jsonify({"success": True, "message": "Login successful"}), 200
         else:
             return jsonify({"success": False, "message": "Invalid credentials"}), 401
     except Exception as e:
@@ -161,7 +164,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear()
-    return jsonify({"success": True, "message": "Logged out"})
+    return jsonify({"success": True, "message": "Logged out"}), 200
 
 # ==========================================================
 # FRONTEND + ML ROUTES
@@ -191,7 +194,7 @@ def upload():
         with Image.open(filepath) as img:
             result = predict_image(img)
 
-        return jsonify({"success": True, "filename": filename, "prediction": result})
+        return jsonify({"success": True, "filename": filename, "prediction": result}), 200
     except MemoryError:
         return jsonify({"success": False, "message": "Server ran out of memory. Try a smaller image."}), 507
     except Exception as e:
