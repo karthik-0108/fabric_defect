@@ -11,6 +11,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+import requests
 
 # ==========================================================
 # CONFIGURATION
@@ -109,7 +110,11 @@ def predict_image(image_pil):
         label = "good" if prob_good >= 0.5 else "defect"
         conf = max(prob_good, prob_defect) * 100.0
 
-        return {"class": label, "confidence": round(conf, 2), "probs": {"good": prob_good, "defect": prob_defect}}
+        return {
+            "class": label,
+            "confidence": round(conf, 2),
+            "probs": {"good": prob_good, "defect": prob_defect},
+        }
     except Exception as e:
         print(f"❌ Prediction failed: {e}")
         return {"class": "N/A", "confidence": 0.0, "error": str(e)}
@@ -176,25 +181,55 @@ def index():
 @app.route("/upload", methods=["POST"])
 def upload():
     try:
-        if "file" not in request.files:
-            return jsonify({"success": False, "message": "No file uploaded"}), 400
+        upload_type = request.form.get("upload_type")
 
-        file = request.files["file"]
-        if file.filename == "":
-            return jsonify({"success": False, "message": "Empty filename"}), 400
-        if not allowed_file(file.filename):
-            return jsonify({"success": False, "message": "Invalid file type"}), 400
+        # ---------- FILE UPLOAD ----------
+        if upload_type == "file":
+            if "file" not in request.files:
+                return jsonify({"success": False, "message": "No file uploaded"}), 400
 
-        filename = secure_filename(file.filename)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"{os.path.splitext(filename)[0]}_{timestamp}.png"
-        filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-        file.save(filepath)
+            file = request.files["file"]
+            if file.filename == "":
+                return jsonify({"success": False, "message": "Empty filename"}), 400
+            if not allowed_file(file.filename):
+                return jsonify({"success": False, "message": "Invalid file type"}), 400
 
+            filename = secure_filename(file.filename)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"{os.path.splitext(filename)[0]}_{timestamp}.png"
+            filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            file.save(filepath)
+
+        # ---------- URL UPLOAD ----------
+        elif upload_type == "url":
+            image_url = request.form.get("image_url")
+            if not image_url:
+                return jsonify({"success": False, "message": "No image URL provided"}), 400
+
+            response = requests.get(image_url, stream=True)
+            if response.status_code != 200:
+                return jsonify({"success": False, "message": "Failed to fetch image from URL"}), 400
+
+            filename = f"image_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+            filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            with open(filepath, "wb") as f:
+                for chunk in response.iter_content(1024):
+                    f.write(chunk)
+
+        else:
+            return jsonify({"success": False, "message": "Invalid upload type"}), 400
+
+        # ---------- PREDICTION ----------
         with Image.open(filepath) as img:
             result = predict_image(img)
 
-        return jsonify({"success": True, "filename": filename, "prediction": result}), 200
+        return jsonify({
+            "success": True,
+            "message": "Upload successful",
+            "filename": filename,
+            "prediction": result
+        }), 200
+
     except MemoryError:
         return jsonify({"success": False, "message": "Server ran out of memory. Try a smaller image."}), 507
     except Exception as e:
@@ -204,6 +239,13 @@ def upload():
 @app.route("/uploads/<filename>")
 def serve_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+
+# ==========================================================
+# JSON 404 HANDLER (to prevent HTML error pages)
+# ==========================================================
+@app.errorhandler(404)
+def not_found(e):
+    return jsonify({"success": False, "message": "Endpoint not found"}), 404
 
 # ==========================================================
 # ENTRY POINT
